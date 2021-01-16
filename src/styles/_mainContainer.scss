@@ -1,5 +1,13 @@
 .main-container {
-    max-width: 80%;
+    width: 90%;
     background: blue;
     margin: 0 auto;
+
+    // @media (min-width: 600px) {
+    //     max-width: 80%;
+    // }
+
+    @media (min-width: 800px) {
+        max-width: 80%;
+    }
 }

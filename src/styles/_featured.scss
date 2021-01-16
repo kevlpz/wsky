@@ -1,18 +1,25 @@
 .featured {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
 
-    @media (max-width: 600px) {
-        display: block;
+    @media (min-width: 600px) {
+        display: flex;
+        justify-content: space-between;
     }
 
     .featured-card-container {
         background: white;
-        width: 40%;
-        position: relative;
+        // width: 40%;
+        // position: relative;
+        width: 100%;
+        margin: 20px 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        // display: flex-column;
+        // justify-content: center;
 
-        @media (max-width: 600px) {
-            width: 100%;
+        @media (min-width: 600px) {
+            width: 40%;
+            position: relative;
         }
 
         .featured-card-img {
@@ -23,29 +30,41 @@
             font-family: futura-pt, sans-serif;
             background: white;
             text-align: center;
-            width: 85%;
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow:0 4px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-            
-            @media (max-width: 600px) {
-                background: green;
-                
+            // width: 85%;
+            // position: absolute;
+            // bottom: -40px;
+            // left: 50%;
+            // transform: translateX(-50%);
+            // box-shadow:0 4px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+            @media (min-width: 1000px) {
+                width: 85%;
+                background: white;
+                position: absolute;
+                bottom: -40px;
+                left: 50%;
+                transform: translateX(-50%);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
             }
 
             button {
-                background: white;
+                background: black;
                 border: 2px solid black;
                 padding: 15px 30px;
                 margin-bottom: 20px;
                 transition: 0.3s;
+                background: black;
+                color: white;
 
-                &:hover {
-                    cursor: pointer;
-                    background: black;
-                    color: white;
+                @media (min-width: 1000px) {
+                    background: white;
+                    color: black;
+                    
+                    &:hover {
+                        cursor: pointer;
+                        background: black;
+                        color: white;
+                    }
                 }
             }
         }
