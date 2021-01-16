@@ -1,9 +1,10 @@
-const FeaturedCard = ({ name, img }) => {
+const FeaturedCard = ({ name, price, img }) => {
     return(
-        <div className="card-container">
-            <img src={img} alt="balvenie-doublewood" />
+        <div className="featured-card-container">
+            <img className="featured-card-img" src={img} alt="balvenie-doublewood" />
             <div className="card-info">
-                <h5>NEW: {name}</h5>
+                <p><strong>NEW: {name}</strong></p>
+                <p>{price}</p>
                 <button>ADD TO CART</button>
             </div>
         </div>

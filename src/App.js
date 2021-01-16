@@ -1,11 +1,12 @@
-import './App.css';
-import Featured from './components/Featured.js'
+import './App.scss';
+import Home from './components/Home.js'
 
 function App() {
   return (
     <div className="App">
-      <h1>wsky</h1>
-      <Featured />
+      <div className="main-container">
+        <Home />
+      </div>
     </div>
   );
 }
