@@ -28,7 +28,7 @@ const Featured = () => {
     return (
         <div className="featured">
             {products.slice(0, 2).map(product => {
-                return <FeaturedCard name={product.name} price={product.price} img={product.img} />
+                return <FeaturedCard name={product.name} price={`$${product.price}`} img={product.img} />
             })}
         </div>
     )

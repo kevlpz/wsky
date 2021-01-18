@@ -1,0 +1,30 @@
+.categories-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    
+    @media (min-width: 1000px) {
+        flex-wrap: nowrap;
+    }
+
+    .category-card-container {
+        width: 45%;
+
+        @media (min-width: 1000px) {
+            width: 23%
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            height: 150px;
+        }
+
+        h6 {
+            margin-top: -3px;
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+    }
+}
