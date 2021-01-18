@@ -1,6 +1,4 @@
 .featured {
-    // display: flex;
-    // justify-content: space-between;
 
     @media (min-width: 600px) {
         display: flex;
@@ -9,13 +7,9 @@
 
     .featured-card-container {
         background: white;
-        // width: 40%;
-        // position: relative;
         width: 100%;
         margin: 20px 0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-        // display: flex-column;
-        // justify-content: center;
 
         @media (min-width: 600px) {
             width: 40%;
@@ -30,12 +24,6 @@
             font-family: futura-pt, sans-serif;
             background: white;
             text-align: center;
-            // width: 85%;
-            // position: absolute;
-            // bottom: -40px;
-            // left: 50%;
-            // transform: translateX(-50%);
-            // box-shadow:0 4px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
             @media (min-width: 1000px) {
                 width: 85%;
