@@ -25,8 +25,6 @@ const Featured = () => {
             .catch(err => console.log(err))
         }, [])
 
-    console.log('products: ', products)
-
     return (
         <div className="featured">
             {products.slice(0, 2).map(product => {
