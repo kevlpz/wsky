@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-
 import FeaturedCard from './FeaturedCard.js'
-import balvenieImg from '../assets/doublewood.jpg'
-import laphroaigImg from '../assets/laphroaig10.jpg'
 
 const Featured = () => {
     const [products, setProducts] = useState([{
+        id: '',
         name: '',
         price: '',
         img: ''
@@ -20,7 +18,6 @@ const Featured = () => {
         })
             .then(res => {
                 setProducts(res.data)
-                console.log('data set')
             })
             .catch(err => console.log(err))
         }, [])
@@ -28,7 +25,7 @@ const Featured = () => {
     return (
         <div className="featured">
             {products.slice(0, 2).map(product => {
-                return <FeaturedCard name={product.name} price={`$${product.price}`} img={product.img} />
+                return <FeaturedCard key={product.id} name={product.name} price={`$${product.price}`} img={product.img} />
             })}
         </div>
     )
