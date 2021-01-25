@@ -10,6 +10,8 @@ const Login = () => {
 
     const handleSubmit = event => {
         event.preventDefault()
+        console.log('submit')
+        console.log('data: ', creds)
         axios({
             method: 'post',
             url: 'http://localhost:5000/users/login',
@@ -17,9 +19,9 @@ const Login = () => {
             withCredentials: true
         })
             .then(res => {
-                console.log(res)
+                console.log('res: ', res)
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log('err: ', err))
     }
 
 
@@ -34,7 +36,7 @@ const Login = () => {
                 onChange={handleChange}
             />
             <input
-                type="password"
+                type="text"
                 name="password"
                 placeholder="password"
                 value={creds.password}
