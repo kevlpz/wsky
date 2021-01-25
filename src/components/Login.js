@@ -10,8 +10,6 @@ const Login = () => {
 
     const handleSubmit = event => {
         event.preventDefault()
-        console.log('submit')
-        console.log('data: ', creds)
         axios({
             method: 'post',
             url: 'http://localhost:5000/users/login',
@@ -19,6 +17,7 @@ const Login = () => {
             withCredentials: true
         })
             .then(res => {
+                setCreds({ email: '', password: '' })
                 console.log('res: ', res)
             })
             .catch(err => console.log('err: ', err))
@@ -27,23 +26,32 @@ const Login = () => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="email"
-                placeholder="email"
-                value={creds.email}
-                onChange={handleChange}
-            />
-            <input
-                type="text"
-                name="password"
-                placeholder="password"
-                value={creds.password}
-                onChange={handleChange}
-            />
-            <button type="submit">Submit</button>
-        </form>
+        <div className="login-container">
+            <h2>Login</h2>
+            <form onSubmit={handleSubmit}>
+                <div className="input-container">
+                    <label>Email:</label>
+                    <input
+                        type="text"
+                        name="email"
+                        placeholder="Email"
+                        value={creds.email}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="input-container">
+                    <label>Password:</label>
+                    <input
+                        type="text"
+                        name="password"
+                        placeholder="Password"
+                        value={creds.password}
+                        onChange={handleChange}
+                    />
+                </div>
+                <button type="submit">Log in</button>
+            </form>
+        </div>
     )
 }
 
