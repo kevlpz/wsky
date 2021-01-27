@@ -13,7 +13,7 @@ function App() {
         <Home />
         {/* <Login /> */}
         {/* <Register /> */}
-        {/* <CategoryPage category="2" /> */}
+        {/* <CategoryPage category="1" /> */}
       </div>
     </div>
   );
