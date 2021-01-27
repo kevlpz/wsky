@@ -1,7 +1,7 @@
 const FeaturedCard = ({ name, price, img }) => {
     return(
         <div className="featured-card-container">
-            <img className="featured-card-img" src={img} alt="balvenie-doublewood" />
+            <img className="featured-card-img" src={img} alt="whiskey" />
             <div className="card-info">
                 <p><strong>NEW: {name}</strong></p>
                 <p>{price}</p>
