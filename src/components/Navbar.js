@@ -13,13 +13,13 @@ const Navbar = () => {
         <>
             <nav className="nav-container">
                 <ul className="desktop-nav-items">
-                    <li>
+                    <li className="nav-item">
                         Log in
                     </li>
-                    <li>
+                    <li className="products nav-item">
                         Products<VscTriangleDown />
                         <ul className="categories">
-                            <li>All</li>true
+                            <li>All</li>
                             <li>Scotch</li>
                             <li>Bourbon</li>
                             <li>Irish</li>
