@@ -34,23 +34,41 @@
         }
     }
 
-    button {
-        background: black;
-        border: 2px solid black;
-        padding: 15px 30px;
-        margin-bottom: 20px;
-        transition: 0.3s;
-        background: black;
-        color: white;
+    .buttons {
+        display: flex;
+        justify-content: space-between;
 
-        @media (min-width: 1000px) {
-            background: white;
-            color: black;
+        button {
+            background: black;
+            border: 2px solid black;
+            padding: 15px 30px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+            background: black;
+            color: white;
+    
+            @media (min-width: 1000px) {
+                background: white;
+                color: black;
+    
+                &:hover {
+                    cursor: pointer;
+                    background: black;
+                    color: white;
+                }
+            }
+        }
 
-            &:hover {
-                cursor: pointer;
-                background: black;
-                color: white;
+        .register-button {
+            background: black;
+            color: white;
+
+            @media (min-width: 1000px) {
+                &:hover {
+                    cursor: pointer;
+                    background: white;
+                    color: black;
+                }
             }
         }
     }

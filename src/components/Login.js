@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
+import { Link, Redirect } from 'react-router-dom'
 
-const Login = () => {
+const Login = ({ logIn, history }) => {
     const [creds, setCreds] = useState({ email: '', password: '' })
 
     const handleChange = event => {
@@ -17,8 +18,8 @@ const Login = () => {
             withCredentials: true
         })
             .then(res => {
-                setCreds({ email: '', password: '' })
-                console.log('res: ', res)
+                logIn(res.data)
+                history.push('/')
             })
             .catch(err => console.log('err: ', err))
     }
@@ -49,7 +50,12 @@ const Login = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit">Log in</button>
+                <div className="buttons">
+                    <button type="submit">Log in</button>
+                    <Link to="/register">
+                        <button className="register-button">Register</button>
+                    </Link>
+                </div>
             </form>
         </div>
     )
