@@ -9,6 +9,7 @@ const Featured = () => {
         price: '',
         img: ''
     }])
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         axios({
@@ -18,16 +19,19 @@ const Featured = () => {
         })
             .then(res => {
                 setProducts(res.data)
+                setIsLoaded(true)
             })
             .catch(err => console.log(err))
-        }, [])
+    }, [])
 
     return (
-        <div className="featured">
-            {products.slice(0, 2).map(product => {
-                return <FeaturedCard key={product.id} name={product.name} price={`$${product.price}`} img={product.img} />
-            })}
-        </div>
+        isLoaded ? (
+            <div className="featured">
+                {products.slice(0, 2).map(product => {
+                    return <FeaturedCard key={product.id} name={product.name} price={`$${product.price}`} img={product.img} />
+                })}
+            </div>
+        ) : null
     )
 }
 
