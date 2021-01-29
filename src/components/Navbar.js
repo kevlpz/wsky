@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { VscMenu, VscTriangleDown } from 'react-icons/vsc'
 import { GoX } from "react-icons/go"
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false)
@@ -14,17 +15,31 @@ const Navbar = () => {
             <nav className="nav-container">
                 <ul className="desktop-nav-items">
                     <li className="nav-item">
-                        Log in
+                        <Link to="/login">
+                            Log in
+                        </Link>
                     </li>
                     <li className="products nav-item">
                         Products<VscTriangleDown />
                         <ul className="categories">
-                            <li>All</li>
-                            <li>Scotch</li>
-                            <li>Bourbon</li>
-                            <li>Irish</li>
-                            <li>Canadian</li>
-                            <li>Other</li>
+                            <Link to="/products">
+                                <li>All</li>
+                            </Link>
+                            <Link to="/products/1">
+                                <li>Scotch</li>
+                            </Link>
+                            <Link to="/products/2">
+                                <li>Bourbon</li>
+                            </Link>
+                            <Link to="/products/3">
+                                <li>Irish</li>
+                            </Link>
+                            <Link to="/products/4">
+                                <li>Canadian</li>
+                            </Link>
+                            <Link to="/products/5">
+                                <li>Other</li>
+                            </Link>
                         </ul>
                     </li>
                 </ul>
@@ -32,18 +47,30 @@ const Navbar = () => {
                     menuOpen ? (
                         <nav className="mobile-nav">
                             <ul className="mobile-nav-items">
-                                <li>
-                                    Log in
-                                </li>
+                                <Link to="/login">
+                                    <li>Log in</li>
+                                </Link>
                                 <li>
                                     Products<VscTriangleDown />
                                     <ul className="categories">
-                                        <li>All</li>
-                                        <li>Scotch</li>
-                                        <li>Bourbon</li>
-                                        <li>Irish</li>
-                                        <li>Canadian</li>
-                                        <li>Other</li>
+                                        <Link to="/products">
+                                            <li>All</li>
+                                        </Link>
+                                        <Link to="/products/1">
+                                            <li>Scotch</li>
+                                        </Link>
+                                        <Link to="/products/2">
+                                            <li>Bourbon</li>
+                                        </Link>
+                                        <Link to="/products/3">
+                                            <li>Irish</li>
+                                        </Link>
+                                        <Link to="/products/4">
+                                            <li>Canadian</li>
+                                        </Link>
+                                        <Link to="/products/5">
+                                            <li>Other</li>
+                                        </Link>
                                     </ul>
                                 </li>
                             </ul>
