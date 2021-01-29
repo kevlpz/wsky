@@ -15,9 +15,13 @@ function App() {
     setUser(user)
   }
 
+  const logOut = () => {
+    setUser(undefined)
+  }
+
   return (
     <div className="App">
-      <Navbar />
+      <Navbar user={user} logOut={logOut} />
       <div className="main-container">
         <Switch>
           <Route exact path="/" component={Home} />

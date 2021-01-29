@@ -3,7 +3,7 @@ import { VscMenu, VscTriangleDown } from 'react-icons/vsc'
 import { GoX } from "react-icons/go"
 import { Link } from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = ({ user, logOut }) => {
     const [menuOpen, setMenuOpen] = useState(false)
 
     const toggleMenu = () => {
@@ -15,9 +15,15 @@ const Navbar = () => {
             <nav className="nav-container">
                 <ul className="desktop-nav-items">
                     <li className="nav-item">
-                        <Link to="/login">
-                            Log in
-                        </Link>
+                        {user ? (
+                            <div onClick={logOut}>
+                                Log out
+                            </div>
+                        ) : (
+                            <Link to="/login">
+                                Log in
+                            </Link>
+                        )}
                     </li>
                     <li className="products nav-item">
                         Products<VscTriangleDown />
@@ -47,9 +53,15 @@ const Navbar = () => {
                     menuOpen ? (
                         <nav className="mobile-nav">
                             <ul className="mobile-nav-items">
+                            {user ? (
+                                <div>
+                                    Log out
+                                </div>
+                            ) : (
                                 <Link to="/login">
-                                    <li>Log in</li>
+                                    Log in
                                 </Link>
+                            )}
                                 <li>
                                     Products<VscTriangleDown />
                                     <ul className="categories">
