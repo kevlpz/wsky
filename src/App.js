@@ -6,10 +6,12 @@ import Register from './components/Register'
 import CategoryPage from './components/CategoryPage'
 import Navbar from './components/Navbar'
 import { Route, Switch } from 'react-router-dom'
+import ShoppingCart from './components/ShoppingCart'
 
 function App() {
 
   const [user, setUser] = useState()
+  console.log('user: ', user)
 
   const logIn = user => {
     setUser(user)
@@ -29,6 +31,7 @@ function App() {
           <Route path="/login" render={(props) => <Login {...props} logIn={logIn} />} />
           <Route path="/products/:category" component={CategoryPage} />
           <Route exact path="/products" component={CategoryPage} />
+          <Route path="/cart" render={props => <ShoppingCart {...props} user={user} />} />
         </Switch>
       </div>
     </div>

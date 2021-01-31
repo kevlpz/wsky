@@ -20,10 +20,10 @@ const Navbar = ({ user, logOut }) => {
                                 Log out
                             </div>
                         ) : (
-                            <Link to="/login">
-                                Log in
-                            </Link>
-                        )}
+                                <Link to="/login">
+                                    Log in
+                                </Link>
+                            )}
                     </li>
                     <li className="products nav-item">
                         Products<VscTriangleDown />
@@ -53,15 +53,15 @@ const Navbar = ({ user, logOut }) => {
                     menuOpen ? (
                         <nav className="mobile-nav">
                             <ul className="mobile-nav-items">
-                            {user ? (
-                                <div>
-                                    Log out
-                                </div>
-                            ) : (
-                                <Link to="/login">
-                                    Log in
-                                </Link>
-                            )}
+                                {user ? (
+                                    <div>
+                                        Log out
+                                    </div>
+                                ) : (
+                                        <Link to="/login">
+                                            Log in
+                                        </Link>
+                                    )}
                                 <li>
                                     Products<VscTriangleDown />
                                     <ul className="categories">
