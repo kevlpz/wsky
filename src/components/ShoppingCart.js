@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import CartItemCard from './CartItemCard'
-import { Redirect } from 'react-router-dom'
 
 const ShoppingCart = ({ user }) => {
     const [cartItems, setCartItems] = useState([])
@@ -13,7 +12,6 @@ const ShoppingCart = ({ user }) => {
             withCredentials: true
         })
             .then(res => {
-                console.log(res)
                 setCartItems(res.data)
             })
             .catch(err => console.log('err: ', err))
@@ -22,8 +20,10 @@ const ShoppingCart = ({ user }) => {
         return (
             <div className="shopping-cart-container">
                 {
-                    cartItems.map(({ name, price, quantity, img }) => {
+                    cartItems.map(({ name, price, quantity, img, itemID }) => {
                         return <CartItemCard
+                            key={itemID}
+                            id={itemID}
                             name={name}
                             price={price}
                             quantity={quantity}
