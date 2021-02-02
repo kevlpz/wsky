@@ -14,7 +14,7 @@ function App() {
   const [cartItems, setCartItems] = useState([])
   const [cartTotal, setCartTotal] = useState(0)
   const [cartChange, setCartChange] = useState(false)
-  console.log('cart total: ', cartTotal)
+  // console.log('cookie: ', browser.cookies.get({name: 'dram'}))
 
   // Get user Cart
   useEffect(() => {
@@ -30,8 +30,12 @@ function App() {
               console.log('item: ', item)
               total += item.price * item.quantity
             })
-            setCartTotal(total)
+            setCartTotal(total.toFixed(2))
             setCartChange(false)
+
+            if(res.status === 200) {
+              setIsLoggedIn(true)
+            }
           })
           .catch(err => console.log('err: ', err))
   }, [cartChange])
@@ -58,27 +62,42 @@ function App() {
     .catch(err => console.log('err: ', err))
 }
 
-  const [user, setUser] = useState()
+const handleQuantityChange = (productID, quantity) => {
+  const data = {productID: productID, quantity: quantity}
 
-  const logIn = user => {
-    setUser(user)
-  }
+  axios({
+      data: data,
+      method: 'put',
+      url: 'http://localhost:5000/cart',
+      withCredentials: true
+  })
+      .then(res => {
+          setCartChange(true)
+      })
+      .catch(err => {
+          console.log('err: ', err)
+      })
+}
+
+  const [isLoggedIn, setIsLoggedIn] = useState()
 
   const logOut = () => {
-    setUser(undefined)
+    setIsLoggedIn(false)
   }
 
   return (
     <div className="App">
-      <Navbar user={user} logOut={logOut} />
+      <Navbar user={isLoggedIn} logOut={logOut} />
       <div className="main-container">
         <Switch>
           <Route exact path="/" render={props => <Home {...props} addToCart={addToCart} />} />
-          <Route path="/register" render={(props) => <Register {...props} logIn={logIn} />} />
-          <Route path="/login" render={(props) => <Login {...props} logIn={logIn} />} />
+          <Route path="/register" render={(props) => <Register {...props} />} />
+          <Route path="/login" render={(props) => <Login {...props} />} />
           <Route path="/products/:category" render={props => <CategoryPage {...props} addToCart={addToCart} />} />
           <Route exact path="/products" render={props => <CategoryPage {...props} addToCart={addToCart} />} />
-          <Route path="/cart" render={props => <ShoppingCart {...props} user={user} cartItems={cartItems} removeFromCart={removeFromCart} />} />
+          <Route path="/cart" render={props => {
+            return <ShoppingCart {...props} cartTotal={cartTotal} cartItems={cartItems} handleQuantityChange={handleQuantityChange} removeFromCart={removeFromCart} />
+          }} />
         </Switch>
       </div>
     </div>

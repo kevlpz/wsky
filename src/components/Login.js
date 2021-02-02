@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const Login = ({ logIn, history }) => {
+const Login = ({ history }) => {
     const [creds, setCreds] = useState({ email: '', password: '' })
 
     const handleChange = event => {
@@ -18,7 +18,6 @@ const Login = ({ logIn, history }) => {
             withCredentials: true
         })
             .then(res => {
-                logIn(res.data)
                 history.push('/')
             })
             .catch(err => console.log('err: ', err))
@@ -29,6 +28,7 @@ const Login = ({ logIn, history }) => {
     return (
         <div className="login-container">
             <h2>Login</h2>
+            <p>Log in to access cart!</p>
             <form onSubmit={handleSubmit}>
                 <div className="input-container">
                     <label>Email:</label>

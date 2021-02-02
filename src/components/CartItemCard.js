@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const CartItemCard = ({ name, price, quantity, img, productID, removeFromCart }) => {
+const CartItemCard = ({ name, price, quantity, img, productID, removeFromCart, handleQuantityChange }) => {
     const [quantityState, setQuantityState] = useState(quantity)
     const [quantityChange, setQuantityChange] = useState(false)
     const [deleted, setDeleted] = useState(false)
@@ -11,21 +11,9 @@ const CartItemCard = ({ name, price, quantity, img, productID, removeFromCart })
         setQuantityChange(true)
     }
 
-    const handleQuantityChange = event => {
-        const data = {productID: productID, quantity: quantityState}
-
-        axios({
-            data: data,
-            method: 'put',
-            url: 'http://localhost:5000/cart',
-            withCredentials: true
-        })
-            .then(res => {
-                setQuantityChange(false)
-            })
-            .catch(err => {
-                console.log('err: ', err)
-            })
+    const changeQuantity = () => {
+        handleQuantityChange(productID, quantityState)
+        setQuantityChange(false)
     }
 
     if(!deleted) {
@@ -34,7 +22,7 @@ const CartItemCard = ({ name, price, quantity, img, productID, removeFromCart })
                 <img src={img} alt="whiskey bottle" />
                 <div>
                     <h4>{name}</h4>
-                    <span>{price}</span>
+                    <span>${price}</span>
                 </div>
                 <div className="cart-card-info">
                     <span>Total: ${(price * quantityState).toFixed(2)}</span>
@@ -48,7 +36,7 @@ const CartItemCard = ({ name, price, quantity, img, productID, removeFromCart })
                     />
                     {
                         quantityChange ? (
-                            <button onClick={handleQuantityChange}>Save</button>
+                            <button onClick={() => changeQuantity(productID, quantityState)}>Save</button>
                         ) : (
                             <button onClick={() => removeFromCart(productID)}>Remove</button>
                         )

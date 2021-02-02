@@ -23,7 +23,6 @@ const Navbar = ({ user, logOut }) => {
                             <FaShoppingCart />
                         </li>
                     </Link>
-                    <li className="nav-item">
                         {user ? (
                             <li className="nav-item">
                                 <div onClick={logOut} className="log-button">
@@ -39,7 +38,6 @@ const Navbar = ({ user, logOut }) => {
                                 </li>
                             </Link>
                         )}
-                    </li>
                     <li className="products nav-item">
                         Products<VscTriangleDown />
                         <ul className="categories">
