@@ -44,7 +44,7 @@ function App() {
         url: 'http://localhost:5000/cart',
         withCredentials: true
     })
-    .then(res => console.log('res: ', res))
+    .then(() => setCartChange(true))
     .catch(err => console.log('err: ', err))
   }
 

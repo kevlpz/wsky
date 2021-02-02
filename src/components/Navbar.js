@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { VscMenu, VscTriangleDown } from 'react-icons/vsc'
 import { GoX } from "react-icons/go"
 import { Link } from 'react-router-dom'
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = ({ user, logOut }) => {
     const [menuOpen, setMenuOpen] = useState(false)
@@ -13,17 +14,29 @@ const Navbar = ({ user, logOut }) => {
     return (
         <>
             <nav className="nav-container">
+                <Link to="/">
+                    <div className="wsky">wsky</div>
+                </Link>
                 <ul className="desktop-nav-items">
+                    <Link to="/cart">
+                        <li className="nav-item">
+                            <FaShoppingCart />
+                        </li>
+                    </Link>
                     <li className="nav-item">
                         {user ? (
-                            <div onClick={logOut} className="log-button">
-                                Log out
-                            </div>
+                            <li className="nav-item">
+                                <div onClick={logOut} className="log-button">
+                                    Log out
+                                </div>
+                            </li>
                         ) : (
                             <Link to="/login">
-                                <div className="log-button">
-                                    Log in
-                                </div>
+                                <li className="nav-item">
+                                        <div className="log-button">
+                                            Log in
+                                        </div>
+                                </li>
                             </Link>
                         )}
                     </li>

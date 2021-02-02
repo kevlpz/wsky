@@ -3,10 +3,18 @@
     height: 60px;
     background: black;
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: space-between;
     align-items: center;
     color: white;
     font-size: 2rem;
+
+    .wsky {
+        padding: 0 20px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
 
     a {
         text-decoration: none;
@@ -71,9 +79,10 @@
     @media(min-width: 1000px) {
         .desktop-nav-items {
             display: flex;
+            justify-content: space-between;
             flex-direction: row-reverse;
             align-items: center;
-            width: 250px;
+            // width: 250px;
             color: white;
             font-size: 1rem;
             height: 100%;
@@ -81,6 +90,7 @@
             .nav-item {
                 height: 100%;
                 line-height: 60px;
+                // width: 100%;
             }
     
             li {
