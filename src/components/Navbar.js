@@ -16,14 +16,16 @@ const Navbar = ({ user, logOut }) => {
                 <ul className="desktop-nav-items">
                     <li className="nav-item">
                         {user ? (
-                            <div onClick={logOut}>
+                            <div onClick={logOut} className="log-button">
                                 Log out
                             </div>
                         ) : (
-                                <Link to="/login">
+                            <Link to="/login">
+                                <div className="log-button">
                                     Log in
-                                </Link>
-                            )}
+                                </div>
+                            </Link>
+                        )}
                     </li>
                     <li className="products nav-item">
                         Products<VscTriangleDown />
@@ -54,14 +56,14 @@ const Navbar = ({ user, logOut }) => {
                         <nav className="mobile-nav">
                             <ul className="mobile-nav-items">
                                 {user ? (
-                                    <div>
+                                    <div onClick={logOut} className="log-button">
                                         Log out
                                     </div>
                                 ) : (
-                                        <Link to="/login">
-                                            Log in
-                                        </Link>
-                                    )}
+                                    <Link to="/login" className="log-button">
+                                        Log in
+                                    </Link>
+                                )}
                                 <li>
                                     Products<VscTriangleDown />
                                     <ul className="categories">
