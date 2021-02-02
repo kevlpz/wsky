@@ -4,10 +4,10 @@ const ShoppingCart = ({ cartItems }) => {
         return (
             <div className="shopping-cart-container">
                 {
-                    cartItems.map(({ name, price, quantity, img, itemID }, i) => {
+                    cartItems.map(({ name, price, quantity, img, productID }, i) => {
                         return <CartItemCard
                             key={i}
-                            id={itemID}
+                            productID={productID}
                             name={name}
                             price={price}
                             quantity={quantity}

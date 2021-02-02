@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const CartItemCard = ({ name, price, quantity, img, id }) => {
+const CartItemCard = ({ name, price, quantity, img, productID }) => {
     const [quantityState, setQuantityState] = useState(quantity)
     const [quantityChange, setQuantityChange] = useState(false)
     const [deleted, setDeleted] = useState(false)
@@ -12,7 +12,9 @@ const CartItemCard = ({ name, price, quantity, img, id }) => {
     }
 
     const handleQuantityChange = event => {
-        const data = {id: id, quantity: quantityState}
+        const data = {productID: productID, quantity: quantityState}
+        console.log('data: ', data)
+
         axios({
             data: data,
             method: 'put',
@@ -28,9 +30,8 @@ const CartItemCard = ({ name, price, quantity, img, id }) => {
     }
 
     const handleItemRemove = () => {
-        console.log('id: ', id)
         axios({
-            url: `http://localhost:5000/cart/${id}`,
+            url: `http://localhost:5000/cart/${productID}`,
             method: 'delete',
             withCredentials: true
         })

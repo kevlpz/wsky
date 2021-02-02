@@ -13,27 +13,27 @@ function App() {
 
   const [cartItems, setCartItems] = useState([])
 
-    // Get user Cart
-    useEffect(() => {
-        axios({
-            method: 'get',
-            url: 'http://localhost:5000/cart',
-            withCredentials: true
-        })
-            .then(res => setCartItems(res.data))
-            .catch(err => console.log('err: ', err))
-    }, [])
-
-    const addToCart = (id) => {
-      console.log('id: ', id)
+  // Get user Cart
+  useEffect(() => {
       axios({
-          method: 'post',
-          data: {productID: id},
+          method: 'get',
           url: 'http://localhost:5000/cart',
           withCredentials: true
       })
-      .then(res => console.log('res: ', res))
-      .catch(err => console.log('err: ', err))
+          .then(res => setCartItems(res.data))
+          .catch(err => console.log('err: ', err))
+  }, [])
+
+  const addToCart = (id) => {
+    console.log('id: ', id)
+    axios({
+        method: 'post',
+        data: {productID: id},
+        url: 'http://localhost:5000/cart',
+        withCredentials: true
+    })
+    .then(res => console.log('res: ', res))
+    .catch(err => console.log('err: ', err))
   }
 
   const [user, setUser] = useState()
