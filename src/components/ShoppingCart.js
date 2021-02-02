@@ -1,6 +1,6 @@
 import CartItemCard from './CartItemCard'
 
-const ShoppingCart = ({ cartItems }) => {
+const ShoppingCart = ({ cartItems, removeFromCart }) => {
         return (
             <div className="shopping-cart-container">
                 {
@@ -12,6 +12,7 @@ const ShoppingCart = ({ cartItems }) => {
                             price={price}
                             quantity={quantity}
                             img={img}
+                            removeFromCart={removeFromCart}
                         />
                     })
                 }

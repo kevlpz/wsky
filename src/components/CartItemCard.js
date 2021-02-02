@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const CartItemCard = ({ name, price, quantity, img, productID }) => {
+const CartItemCard = ({ name, price, quantity, img, productID, removeFromCart }) => {
     const [quantityState, setQuantityState] = useState(quantity)
     const [quantityChange, setQuantityChange] = useState(false)
     const [deleted, setDeleted] = useState(false)
@@ -13,7 +13,6 @@ const CartItemCard = ({ name, price, quantity, img, productID }) => {
 
     const handleQuantityChange = event => {
         const data = {productID: productID, quantity: quantityState}
-        console.log('data: ', data)
 
         axios({
             data: data,
@@ -27,16 +26,6 @@ const CartItemCard = ({ name, price, quantity, img, productID }) => {
             .catch(err => {
                 console.log('err: ', err)
             })
-    }
-
-    const handleItemRemove = () => {
-        axios({
-            url: `http://localhost:5000/cart/${productID}`,
-            method: 'delete',
-            withCredentials: true
-        })
-        .then(res => setDeleted(true))
-        .catch(err => console.log('err: ', err))
     }
 
     if(!deleted) {
@@ -61,7 +50,7 @@ const CartItemCard = ({ name, price, quantity, img, productID }) => {
                         quantityChange ? (
                             <button onClick={handleQuantityChange}>Save</button>
                         ) : (
-                            <button onClick={handleItemRemove}>Remove</button>
+                            <button onClick={() => removeFromCart(productID)}>Remove</button>
                         )
                     }
                 </div>

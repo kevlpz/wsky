@@ -12,6 +12,9 @@ import axios from 'axios'
 function App() {
 
   const [cartItems, setCartItems] = useState([])
+  const [cartTotal, setCartTotal] = useState(0)
+  const [cartChange, setCartChange] = useState(false)
+  console.log('cart total: ', cartTotal)
 
   // Get user Cart
   useEffect(() => {
@@ -20,9 +23,18 @@ function App() {
           url: 'http://localhost:5000/cart',
           withCredentials: true
       })
-          .then(res => setCartItems(res.data))
+          .then(res => {
+            setCartItems(res.data)
+            let total = 0
+            res.data.forEach(item => {
+              console.log('item: ', item)
+              total += item.price * item.quantity
+            })
+            setCartTotal(total)
+            setCartChange(false)
+          })
           .catch(err => console.log('err: ', err))
-  }, [])
+  }, [cartChange])
 
   const addToCart = (id) => {
     console.log('id: ', id)
@@ -36,8 +48,17 @@ function App() {
     .catch(err => console.log('err: ', err))
   }
 
+  const removeFromCart = (productID) => {
+    axios({
+        url: `http://localhost:5000/cart/${productID}`,
+        method: 'delete',
+        withCredentials: true
+    })
+    .then(() => setCartChange(true))
+    .catch(err => console.log('err: ', err))
+}
+
   const [user, setUser] = useState()
-  console.log('user: ', user)
 
   const logIn = user => {
     setUser(user)
@@ -55,9 +76,9 @@ function App() {
           <Route exact path="/" render={props => <Home {...props} addToCart={addToCart} />} />
           <Route path="/register" render={(props) => <Register {...props} logIn={logIn} />} />
           <Route path="/login" render={(props) => <Login {...props} logIn={logIn} />} />
-          <Route path="/products/:category" component={CategoryPage} />
-          <Route exact path="/products" component={CategoryPage} />
-          <Route path="/cart" render={props => <ShoppingCart {...props} user={user} cartItems={cartItems} />} />
+          <Route path="/products/:category" render={props => <CategoryPage {...props} addToCart={addToCart} />} />
+          <Route exact path="/products" render={props => <CategoryPage {...props} addToCart={addToCart} />} />
+          <Route path="/cart" render={props => <ShoppingCart {...props} user={user} cartItems={cartItems} removeFromCart={removeFromCart} />} />
         </Switch>
       </div>
     </div>
