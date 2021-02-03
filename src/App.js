@@ -5,7 +5,7 @@ import Login from './components/Login.js'
 import Register from './components/Register'
 import CategoryPage from './components/CategoryPage'
 import Navbar from './components/Navbar'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import ShoppingCart from './components/ShoppingCart'
 import axios from 'axios'
 
@@ -17,6 +17,7 @@ function App(props) {
   const [cookie, setCookie] = useState(document.cookie)
   // console.log('cookie: ', browser.cookies.get({name: 'dram'}))
   console.log('cookie: ', document.cookie)
+  console.log('props: ', props)
 
   // Get user Cart
   useEffect(() => {
@@ -49,7 +50,7 @@ function App(props) {
       .then(() => setCartChange(true))
       .catch(err => console.log('err: ', err))
     } else {
-      props.history.push('/login')
+      return <Redirect to="/login" />
     }
   }
 
