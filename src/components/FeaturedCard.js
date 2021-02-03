@@ -1,10 +1,20 @@
 import { useState } from 'react'
 
-const FeaturedCard = ({ name, id, price, img, addToCart }) => {
+const FeaturedCard = ({ name, id, price, img, history }) => {
     const [added, setAdded] = useState(false)
     const handleAddToCart = () => {
-        addToCart(id)
-        setAdded(true)
+        if(document.cookie) {
+            axios({
+                method: 'post',
+                data: {productID: id},
+                url: 'https://infinite-refuge-27306.herokuapp.com/cart',
+                withCredentials: true
+            })
+            .then(() => setCartChange(true))
+            .catch(err => console.log('err: ', err))
+        } else {
+            history.push('/login')
+        }
     }
 
     return(

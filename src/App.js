@@ -40,18 +40,14 @@ function App(props) {
   }, [cartChange])
 
   const addToCart = (id) => {
-    if(cookie) {
-      axios({
-        method: 'post',
-        data: {productID: id},
-        url: 'https://infinite-refuge-27306.herokuapp.com/cart',
-        withCredentials: true
-      })
-      .then(() => setCartChange(true))
-      .catch(err => console.log('err: ', err))
-    } else {
-      return <Redirect to="/login" />
-    }
+    axios({
+      method: 'post',
+      data: {productID: id},
+      url: 'https://infinite-refuge-27306.herokuapp.com/cart',
+      withCredentials: true
+    })
+    .then(() => setCartChange(true))
+    .catch(err => console.log('err: ', err))
   }
 
   const removeFromCart = (productID) => {
