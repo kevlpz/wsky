@@ -9,7 +9,7 @@ import { Route, Switch } from 'react-router-dom'
 import ShoppingCart from './components/ShoppingCart'
 import axios from 'axios'
 
-function App() {
+function App(props) {
 
   const [cartItems, setCartItems] = useState([])
   const [cartTotal, setCartTotal] = useState(0)
@@ -39,15 +39,18 @@ function App() {
   }, [cartChange])
 
   const addToCart = (id) => {
-    console.log('id: ', id)
-    axios({
+    if(cookie) {
+      axios({
         method: 'post',
         data: {productID: id},
         url: 'https://infinite-refuge-27306.herokuapp.com/cart',
         withCredentials: true
-    })
-    .then(() => setCartChange(true))
-    .catch(err => console.log('err: ', err))
+      })
+      .then(() => setCartChange(true))
+      .catch(err => console.log('err: ', err))
+    } else {
+      props.history.push('/login')
+    }
   }
 
   const removeFromCart = (productID) => {
