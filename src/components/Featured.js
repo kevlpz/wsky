@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import FeaturedCard from './FeaturedCard.js'
 
-const Featured = ({ addToCart, setCartChange }) => {
+const Featured = ({ addToCart, setCartChange, history }) => {
     const [products, setProducts] = useState([{
         id: '',
         name: '',
@@ -36,6 +36,7 @@ const Featured = ({ addToCart, setCartChange }) => {
                         img={product.img}
                         addToCart={addToCart}
                         setCartChange={setCartChange}
+                        history={history}
                     />
                 })}
             </div>

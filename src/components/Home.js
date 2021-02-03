@@ -3,10 +3,10 @@ import Banner from './Banner.js'
 import Categories from './Categories.js'
 import { Link } from 'react-router-dom'
 
-const Home = ({ addToCart }) => {
+const Home = ({ addToCart, setCartChange, history }) => {
     return (
         <>
-            <Featured addToCart={addToCart} />
+            <Featured addToCart={addToCart} setCartChange={setCartChange} history={history} />
             <Link to="/products/1">
                 <Banner />
             </Link>
