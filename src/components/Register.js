@@ -10,7 +10,6 @@ const Login = ({ history }) => {
 
     const handleSubmit = event => {
         event.preventDefault()
-        console.log(creds)
         if (creds.password === creds.confirmPassword) {
             axios({
                 method: 'post',
@@ -55,7 +54,7 @@ const Login = ({ history }) => {
                 <div className="input-container">
                     <label>Confirm password:</label>
                     <input
-                        type="text"
+                        type="password"
                         name="confirmPassword"
                         placeholder="Confirm password"
                         value={creds.confirmPassword}
