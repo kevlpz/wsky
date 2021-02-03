@@ -77,6 +77,10 @@
     }
 
     @media(min-width: 1000px) {
+        .mobile-cart {
+            display: none;
+        }
+
         .desktop-nav-items {
             display: flex;
             justify-content: space-between;

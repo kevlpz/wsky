@@ -45,7 +45,7 @@ const Login = ({ history }) => {
                 <div className="input-container">
                     <label>Password:</label>
                     <input
-                        type="text"
+                        type="password"
                         name="password"
                         placeholder="Password"
                         value={creds.password}

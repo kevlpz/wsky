@@ -82,6 +82,13 @@ const Navbar = ({ user, setCookie }) => {
                                         Log in
                                     </Link>
                                 )}
+                                <li className="nav-item">
+                                    <Link to="/cart">
+                                        <li className="nav-item">
+                                            <FaShoppingCart />
+                                        </li>
+                                    </Link>
+                                </li>
                                 <li>
                                     Products<VscTriangleDown />
                                     <ul className="categories">
@@ -109,8 +116,8 @@ const Navbar = ({ user, setCookie }) => {
                             <GoX className="menu-close-button" onClick={() => toggleMenu()} />
                         </nav>
                     ) : (
-                            <VscMenu className="menu-button" onClick={() => toggleMenu()} />
-                        )
+                        <VscMenu className="menu-button" onClick={() => toggleMenu()} />
+                    )
                 }
             </nav>
         </>
