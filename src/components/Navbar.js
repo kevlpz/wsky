@@ -4,11 +4,16 @@ import { GoX } from "react-icons/go"
 import { Link } from 'react-router-dom'
 import { FaShoppingCart } from "react-icons/fa";
 
-const Navbar = ({ user, logOut }) => {
+const Navbar = ({ user, setCookie }) => {
     const [menuOpen, setMenuOpen] = useState(false)
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen)
+    }
+
+    const logOut = () => {
+        document.cookie = "dram= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+        setCookie(null)
     }
 
     return (
@@ -24,11 +29,13 @@ const Navbar = ({ user, logOut }) => {
                         </li>
                     </Link>
                         {user ? (
-                            <li className="nav-item">
+                            <Link to="/">
+                                <li className="nav-item">
                                 <div onClick={logOut} className="log-button">
                                     Log out
                                 </div>
                             </li>
+                            </Link>
                         ) : (
                             <Link to="/login">
                                 <li className="nav-item">

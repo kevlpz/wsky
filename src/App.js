@@ -14,7 +14,9 @@ function App() {
   const [cartItems, setCartItems] = useState([])
   const [cartTotal, setCartTotal] = useState(0)
   const [cartChange, setCartChange] = useState(false)
+  const [cookie, setCookie] = useState(document.cookie)
   // console.log('cookie: ', browser.cookies.get({name: 'dram'}))
+  console.log('cookie: ', document.cookie)
 
   // Get user Cart
   useEffect(() => {
@@ -32,10 +34,6 @@ function App() {
             })
             setCartTotal(total.toFixed(2))
             setCartChange(false)
-
-            if(res.status === 200) {
-              setIsLoggedIn(true)
-            }
           })
           .catch(err => console.log('err: ', err))
   }, [cartChange])
@@ -60,34 +58,28 @@ function App() {
     })
     .then(() => setCartChange(true))
     .catch(err => console.log('err: ', err))
-}
+  }
 
-const handleQuantityChange = (productID, quantity) => {
-  const data = {productID: productID, quantity: quantity}
+  const handleQuantityChange = (productID, quantity) => {
+    const data = {productID: productID, quantity: quantity}
 
-  axios({
-      data: data,
-      method: 'put',
-      url: 'http://localhost:5000/cart',
-      withCredentials: true
-  })
-      .then(res => {
-          setCartChange(true)
-      })
-      .catch(err => {
-          console.log('err: ', err)
-      })
-}
-
-  const [isLoggedIn, setIsLoggedIn] = useState()
-
-  const logOut = () => {
-    setIsLoggedIn(false)
+    axios({
+        data: data,
+        method: 'put',
+        url: 'http://localhost:5000/cart',
+        withCredentials: true
+    })
+        .then(res => {
+            setCartChange(true)
+        })
+        .catch(err => {
+            console.log('err: ', err)
+        })
   }
 
   return (
     <div className="App">
-      <Navbar user={isLoggedIn} logOut={logOut} />
+      <Navbar user={cookie} setCookie={setCookie} />
       <div className="main-container">
         <Switch>
           <Route exact path="/" render={props => <Home {...props} addToCart={addToCart} />} />
