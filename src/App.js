@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
       axios({
           method: 'get',
-          url: 'http://localhost:5000/cart',
+          url: 'https://infinite-refuge-27306.herokuapp.com/cart',
           withCredentials: true
       })
           .then(res => {
@@ -43,7 +43,7 @@ function App() {
     axios({
         method: 'post',
         data: {productID: id},
-        url: 'http://localhost:5000/cart',
+        url: 'https://infinite-refuge-27306.herokuapp.com/cart',
         withCredentials: true
     })
     .then(() => setCartChange(true))
@@ -52,7 +52,7 @@ function App() {
 
   const removeFromCart = (productID) => {
     axios({
-        url: `http://localhost:5000/cart/${productID}`,
+        url: `https://infinite-refuge-27306.herokuapp.com/${productID}`,
         method: 'delete',
         withCredentials: true
     })
@@ -66,7 +66,7 @@ function App() {
     axios({
         data: data,
         method: 'put',
-        url: 'http://localhost:5000/cart',
+        url: 'https://infinite-refuge-27306.herokuapp.com/cart',
         withCredentials: true
     })
         .then(res => {

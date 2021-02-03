@@ -14,7 +14,7 @@ const Featured = ({ addToCart }) => {
     useEffect(() => {
         axios({
             method: 'get',
-            url: 'http://localhost:5000/products',
+            url: 'https://infinite-refuge-27306.herokuapp.com/products',
             withCredentials: true
         })
             .then(res => {

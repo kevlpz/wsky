@@ -14,7 +14,7 @@ const Login = ({ history }) => {
         if (creds.password === creds.confirmPassword) {
             axios({
                 method: 'post',
-                url: 'http://localhost:5000/users/register',
+                url: 'https://infinite-refuge-27306.herokuapp.com/users/register',
                 data: creds,
                 withCredentials: true
             })
