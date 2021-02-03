@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import axios from 'axios'
 
-const FeaturedCard = ({ name, id, price, img, history }) => {
+const FeaturedCard = ({ name, id, price, img, history, setCartChange }) => {
     const [added, setAdded] = useState(false)
     const handleAddToCart = () => {
         if(document.cookie) {

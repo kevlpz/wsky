@@ -82,7 +82,7 @@ function App(props) {
       <Navbar user={cookie} setCookie={setCookie} />
       <div className="main-container">
         <Switch>
-          <Route exact path="/" render={props => <Home {...props} addToCart={addToCart} />} />
+          <Route exact path="/" render={props => <Home {...props} addToCart={addToCart} setCartChange={setCartChange} />} />
           <Route path="/register" render={(props) => <Register {...props} />} />
           <Route path="/login" render={(props) => <Login {...props} />} />
           <Route path="/products/:category" render={props => <CategoryPage {...props} addToCart={addToCart} />} />
