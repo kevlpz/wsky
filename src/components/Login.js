@@ -19,7 +19,7 @@ const Login = ({ history }) => {
         })
             .then(res => {
                 history.push('/')
-                window.location.reload()
+                // window.location.reload()
             })
             .catch(err => console.log('err: ', err))
     }
