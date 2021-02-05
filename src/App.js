@@ -25,7 +25,7 @@ function App(props) {
   useEffect(() => {
     axios({
         method: 'get',
-        url: 'http://localhost:5000/cart',
+        url: 'https://infinite-refuge-27306.herokuapp.com/cart',
         withCredentials: true
     })
         .then(res => {
@@ -42,7 +42,7 @@ function App(props) {
 
     axios({
       method: 'get',
-      url: 'http://localhost:5000/users',
+      url: 'https://infinite-refuge-27306.herokuapp.com/users',
       withCredentials: true
     })
     .then(res => {
@@ -60,7 +60,7 @@ function App(props) {
     axios({
       method: 'post',
       data: {productID: id},
-      url: 'http://localhost:5000/cart',
+      url: 'https://infinite-refuge-27306.herokuapp.com/cart',
       withCredentials: true
     })
     .then(() => setCartChange(true))
@@ -69,7 +69,7 @@ function App(props) {
 
   const removeFromCart = (productID) => {
     axios({
-        url: `http://localhost:5000/${productID}`,
+        url: `https://infinite-refuge-27306.herokuapp.com/${productID}`,
         method: 'delete',
         withCredentials: true
     })
@@ -83,7 +83,7 @@ function App(props) {
     axios({
         data: data,
         method: 'put',
-        url: 'http://localhost:5000/cart',
+        url: 'https://infinite-refuge-27306.herokuapp.com/cart',
         withCredentials: true
     })
         .then(res => {
