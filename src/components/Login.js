@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-const Login = ({ history }) => {
+const Login = ({ history, setIsLoggedIn }) => {
     const [creds, setCreds] = useState({ email: '', password: '' })
 
     const handleChange = event => {
@@ -13,11 +13,12 @@ const Login = ({ history }) => {
         event.preventDefault()
         axios({
             method: 'post',
-            url: 'https://infinite-refuge-27306.herokuapp.com/users/login',
+            url: 'http://localhost:5000/users/login',
             data: creds,
             withCredentials: true
         })
             .then(res => {
+                setIsLoggedIn(true)
                 history.push('/')
                 // window.location.reload()
             })
