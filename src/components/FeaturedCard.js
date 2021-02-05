@@ -8,7 +8,7 @@ const FeaturedCard = ({ name, id, price, img, history, setCartChange, isLoggedIn
             axios({
                 method: 'post',
                 data: {productID: id},
-                url: 'http://localhost:5000/cart',
+                url: 'https://infinite-refuge-27306.herokuapp.com/cart',
                 withCredentials: true
             })
             .then(() => {

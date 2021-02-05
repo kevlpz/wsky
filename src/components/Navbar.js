@@ -15,7 +15,7 @@ const Navbar = ({ user, setIsLoggedIn }) => {
     const logOut = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:5000/users/logout',
+            url: 'https://infinite-refuge-27306.herokuapp.com/users/logout',
             withCredentials: true
         })
         .then(res => {

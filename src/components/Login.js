@@ -13,7 +13,7 @@ const Login = ({ history, setIsLoggedIn }) => {
         event.preventDefault()
         axios({
             method: 'post',
-            url: 'http://localhost:5000/users/login',
+            url: 'https://infinite-refuge-27306.herokuapp.com/users/login',
             data: creds,
             withCredentials: true
         })
