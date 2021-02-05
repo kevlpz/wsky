@@ -3,8 +3,9 @@ import { VscMenu, VscTriangleDown } from 'react-icons/vsc'
 import { GoX } from "react-icons/go"
 import { Link } from 'react-router-dom'
 import { FaShoppingCart } from "react-icons/fa";
+import axios from 'axios'
 
-const Navbar = ({ user, setCookie }) => {
+const Navbar = ({ user, setIsLoggedIn }) => {
     const [menuOpen, setMenuOpen] = useState(false)
 
     const toggleMenu = () => {
@@ -12,8 +13,15 @@ const Navbar = ({ user, setCookie }) => {
     }
 
     const logOut = () => {
-        document.cookie = "dram= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
-        setCookie(null)
+        axios({
+            method: 'get',
+            url: 'http://localhost:5000/users/logout',
+            withCredentials: true
+        })
+        .then(res => {
+            setIsLoggedIn(false)
+        })
+        .catch(err => console.log('err: ', err))
     }
 
     return (

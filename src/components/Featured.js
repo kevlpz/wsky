@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import FeaturedCard from './FeaturedCard.js'
 
-const Featured = ({ addToCart, setCartChange, history }) => {
+const Featured = ({ addToCart, setCartChange, history, isLoggedIn }) => {
     const [products, setProducts] = useState([{
         id: '',
         name: '',
@@ -14,7 +14,7 @@ const Featured = ({ addToCart, setCartChange, history }) => {
     useEffect(() => {
         axios({
             method: 'get',
-            url: 'https://infinite-refuge-27306.herokuapp.com/products',
+            url: 'http://localhost:5000/products',
             withCredentials: true
         })
             .then(res => {
@@ -37,6 +37,7 @@ const Featured = ({ addToCart, setCartChange, history }) => {
                         addToCart={addToCart}
                         setCartChange={setCartChange}
                         history={history}
+                        isLoggedIn={isLoggedIn}
                     />
                 })}
             </div>
