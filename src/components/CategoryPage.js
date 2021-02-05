@@ -11,7 +11,7 @@ const CategoryPage = ({ addToCart }) => {
     useEffect(() => {
         axios({
             method: 'get',
-            url: 'https://infinite-refuge-27306.herokuapp.com/products',
+            url: 'http://localhost:5000/products',
             withCredentials: true
         })
             .then(res => {
