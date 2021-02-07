@@ -1,10 +1,14 @@
 import { useState } from 'react'
 
-const ProductCard = ({ product, addToCart }) => {
+const ProductCard = ({ product, addToCart, isLoggedIn, history }) => {
     const [added, setAdded] = useState(false)
     const handleAddToCart = () => {
-        addToCart(product.id)
-        setAdded(true)
+        if(isLoggedIn) {
+            addToCart(product.id)
+            setAdded(true)
+        } else {
+            history.push('/login')
+        }
     }
 
     return (

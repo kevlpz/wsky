@@ -5,18 +5,20 @@ const ShoppingCart = ({ cartItems, cartTotal, removeFromCart, handleQuantityChan
             <>
                 <div className="shopping-cart-container">
                     {
-                        cartItems.map(({ name, price, quantity, img, productID }, i) => {
-                            return <CartItemCard
-                                key={i}
-                                productID={productID}
-                                name={name}
-                                price={price}
-                                quantity={quantity}
-                                img={img}
-                                removeFromCart={removeFromCart}
-                                handleQuantityChange={handleQuantityChange}
-                            />
-                        })
+                        cartItems.length ? (
+                            cartItems.map(({ name, price, quantity, img, productID }, i) => {
+                                return <CartItemCard
+                                    key={i}
+                                    productID={productID}
+                                    name={name}
+                                    price={price}
+                                    quantity={quantity}
+                                    img={img}
+                                    removeFromCart={removeFromCart}
+                                    handleQuantityChange={handleQuantityChange}
+                                />
+                            })
+                        ) : <p>Cart is empty</p>
                     }
                 </div>
                 <h2>TOTAL: ${cartTotal}</h2>

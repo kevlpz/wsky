@@ -20,6 +20,7 @@ const Navbar = ({ user, setIsLoggedIn }) => {
         })
         .then(res => {
             setIsLoggedIn(false)
+            window.location.reload()
         })
         .catch(err => console.log('err: ', err))
     }

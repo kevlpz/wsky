@@ -104,7 +104,7 @@ function App(props) {
           <Route exact path="/" render={props => <Home {...props} isLoggedIn={isLoggedIn} addToCart={addToCart} setCartChange={setCartChange} />} />
           <Route path="/register" render={(props) => <Register {...props} />} />
           <Route path="/login" render={(props) => <Login {...props} setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/products/:category" render={props => <CategoryPage {...props} addToCart={addToCart} />} />
+          <Route path="/products/:category" render={props => <CategoryPage {...props} addToCart={addToCart} isLoggedIn={isLoggedIn} />} />
           <Route exact path="/products" render={props => <CategoryPage {...props} addToCart={addToCart} />} />
           <Route path="/cart" render={props => {
             return <ShoppingCart {...props} cartTotal={cartTotal} cartItems={cartItems} handleQuantityChange={handleQuantityChange} removeFromCart={removeFromCart} />
