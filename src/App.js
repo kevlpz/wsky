@@ -14,12 +14,7 @@ function App(props) {
   const [cartItems, setCartItems] = useState([])
   const [cartTotal, setCartTotal] = useState(0)
   const [cartChange, setCartChange] = useState(false)
-  const [cookie, setCookie] = useState(document.cookie)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  console.log('isLoggedIn: ', isLoggedIn)
-  // console.log('cookie: ', browser.cookies.get({name: 'dram'}))
-  console.log('cookie: ', document.cookie)
-  console.log('props: ', props)
 
   // Get user Cart
   useEffect(() => {

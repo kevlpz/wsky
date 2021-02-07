@@ -3,7 +3,7 @@ import axios from 'axios'
 import ProductCard from './ProductCard'
 import { useParams } from 'react-router-dom'
 
-const CategoryPage = ({ addToCart }) => {
+const CategoryPage = ({ addToCart, history }) => {
 
     const [products, setProducts] = useState([])
     const { category } = useParams()
@@ -28,7 +28,7 @@ const CategoryPage = ({ addToCart }) => {
     return (
         <div className="category-page">
             {
-                products.map(product => <ProductCard key={product.id} product={product} addToCart={addToCart} />)
+                products.map(product => <ProductCard key={product.id} product={product} addToCart={addToCart} history={history} />)
             }
         </div>
     )
