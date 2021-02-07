@@ -53,7 +53,9 @@ function App(props) {
         setIsLoggedIn(false)
       }
     })
-    .catch(err => console.log('err: ', err))
+    .catch(err => {
+      console.log('err: ', err)
+    })
   }, [cartChange])
 
   const addToCart = (id) => {
@@ -69,7 +71,7 @@ function App(props) {
 
   const removeFromCart = (productID) => {
     axios({
-        url: `https://infinite-refuge-27306.herokuapp.com/${productID}`,
+        url: `https://infinite-refuge-27306.herokuapp.com/cart/${productID}`,
         method: 'delete',
         withCredentials: true
     })
