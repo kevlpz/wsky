@@ -105,7 +105,7 @@ function App(props) {
             isLoggedIn ? (
               <ShoppingCart {...props} cartTotal={cartTotal} cartItems={cartItems} handleQuantityChange={handleQuantityChange} removeFromCart={removeFromCart} />
             ) : (
-              <Redirect to="/login"
+              <Redirect to="/login" />
             )
           }} />
         </Switch>
