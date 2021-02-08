@@ -92,10 +92,8 @@ const Navbar = ({ user, setIsLoggedIn }) => {
                                     </Link>
                                 )}
                                 <li className="nav-item">
-                                    <Link to="/cart">
-                                        <li className="nav-item" onClick={() => setMenuOpen(false)}>
-                                            <FaShoppingCart />
-                                        </li>
+                                    <Link to="/cart" onClick={() => setMenuOpen(false)}>
+                                        <FaShoppingCart />
                                     </Link>
                                 </li>
                                 <li>
