@@ -87,13 +87,13 @@ const Navbar = ({ user, setIsLoggedIn }) => {
                                         Log out
                                     </div>
                                 ) : (
-                                    <Link to="/login" className="log-button">
+                                    <Link to="/login" className="log-button" onClick={() => setMenuOpen(false)}>
                                         Log in
                                     </Link>
                                 )}
                                 <li className="nav-item">
                                     <Link to="/cart">
-                                        <li className="nav-item">
+                                        <li className="nav-item" onClick={() => setMenuOpen(false)}>
                                             <FaShoppingCart />
                                         </li>
                                     </Link>
@@ -102,22 +102,22 @@ const Navbar = ({ user, setIsLoggedIn }) => {
                                     Products<VscTriangleDown />
                                     <ul className="categories">
                                         <Link to="/products">
-                                            <li>All</li>
+                                            <li onClick={() => setMenuOpen(false)}>All</li>
                                         </Link>
                                         <Link to="/products/1">
-                                            <li>Scotch</li>
+                                            <li onClick={() => setMenuOpen(false)}>Scotch</li>
                                         </Link>
                                         <Link to="/products/2">
-                                            <li>Bourbon</li>
+                                            <li onClick={() => setMenuOpen(false)}>Bourbon</li>
                                         </Link>
                                         <Link to="/products/3">
-                                            <li>Irish</li>
+                                            <li onClick={() => setMenuOpen(false)}>Irish</li>
                                         </Link>
                                         <Link to="/products/4">
-                                            <li>Canadian</li>
+                                            <li onClick={() => setMenuOpen(false)}>Canadian</li>
                                         </Link>
                                         <Link to="/products/5">
-                                            <li>Other</li>
+                                            <li onClick={() => setMenuOpen(false)}>Other</li>
                                         </Link>
                                     </ul>
                                 </li>
