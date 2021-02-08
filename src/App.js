@@ -102,7 +102,11 @@ function App(props) {
           <Route path="/products/:category" render={props => <CategoryPage {...props} addToCart={addToCart} isLoggedIn={isLoggedIn} />} />
           <Route exact path="/products" render={props => <CategoryPage {...props} addToCart={addToCart} />} />
           <Route path="/cart" render={props => {
-            return <ShoppingCart {...props} cartTotal={cartTotal} cartItems={cartItems} handleQuantityChange={handleQuantityChange} removeFromCart={removeFromCart} />
+            isLoggedIn ? (
+              <ShoppingCart {...props} cartTotal={cartTotal} cartItems={cartItems} handleQuantityChange={handleQuantityChange} removeFromCart={removeFromCart} />
+            ) : (
+              <Redirect to="/login"
+            )
           }} />
         </Switch>
       </div>
