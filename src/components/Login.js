@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Login = ({ history, setIsLoggedIn }) => {
     const [creds, setCreds] = useState({ email: '', password: '' })
+    console.log('cookie: ', navigator.cookieEnabled)
 
     const handleChange = event => {
         setCreds({ ...creds, [event.target.name]: event.target.value })
