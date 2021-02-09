@@ -74,7 +74,7 @@ const Login = ({ history, setIsLoggedIn }) => {
                 {
                     cookiesAllowed ? null : (
                         <>
-                            <p className="warning">Must have third part cookies enabled</p>
+                            <p className="warning">Must have third party cookies enabled</p>
                             <p>Please enable third party cookies in your browser's settings</p>
                         </>
                     )
