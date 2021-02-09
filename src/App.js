@@ -98,18 +98,10 @@ function App(props) {
         <Switch>
           <Route exact path="/" render={props => <Home {...props} isLoggedIn={isLoggedIn} addToCart={addToCart} setCartChange={setCartChange} />} />
           <Route path="/register" render={(props) => <Register {...props} />} />
-          {
-            !isLoggedIn ? (
-              <Route path="/login" render={(props) => <Login {...props} setIsLoggedIn={setIsLoggedIn} />} />
-            ) : <Redirect to="/" />
-          }
+          <Route path="/login" render={(props) => <Login {...props} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/products/:category" render={props => <CategoryPage {...props} addToCart={addToCart} isLoggedIn={isLoggedIn} />} />
           <Route exact path="/products" render={props => <CategoryPage {...props} addToCart={addToCart} />} />
-          {
-            isLoggedIn ? (
-              <Route path="/cart" render={props => <ShoppingCart {...props} cartTotal={cartTotal} cartItems={cartItems} handleQuantityChange={handleQuantityChange} removeFromCart={removeFromCart} />} />
-            ) : <Redirect to="/login" />
-          }
+          <Route path="/cart" render={props => <ShoppingCart {...props} isLoggedIn={isLoggedIn} cartTotal={cartTotal} cartItems={cartItems} handleQuantityChange={handleQuantityChange} removeFromCart={removeFromCart} />} />
         </Switch>
       </div>
     </div>

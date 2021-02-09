@@ -1,7 +1,8 @@
 import CartItemCard from './CartItemCard'
+import { Redirect } from 'react-router-dom'
 
-const ShoppingCart = ({ cartItems, cartTotal, removeFromCart, handleQuantityChange }) => {
-        return (
+const ShoppingCart = ({ cartItems, cartTotal, removeFromCart, handleQuantityChange, isLoggedIn }) => {
+        isLoggedIn ? (
             <>
                 <div className="shopping-cart-container">
                     {
@@ -23,7 +24,7 @@ const ShoppingCart = ({ cartItems, cartTotal, removeFromCart, handleQuantityChan
                 </div>
                 <h2>TOTAL: ${cartTotal}</h2>
             </>
-        )
+        ) : <Redirect to="/login" />
 }
 
 export default ShoppingCart

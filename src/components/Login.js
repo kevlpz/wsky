@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
-const Login = ({ history, setIsLoggedIn }) => {
+const Login = ({ history, isLoggedIn, setIsLoggedIn }) => {
     const [creds, setCreds] = useState({ email: '', password: '' })
     const [cookiesAllowed, setCookiesAllowed] = useState(true)
     console.log('cookie: ', navigator.cookieEnabled)
@@ -40,7 +40,7 @@ const Login = ({ history, setIsLoggedIn }) => {
 
 
 
-    return (
+    !isLoggedIn ? (
         <div className="login-container">
             <h2>Login</h2>
             <p>Log in to access cart!</p>
@@ -81,7 +81,7 @@ const Login = ({ history, setIsLoggedIn }) => {
                 }
             </form>
         </div>
-    )
+    ) : <Redirect to="/" />
 }
 
 export default Login
