@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Login = ({ history, setIsLoggedIn }) => {
     const [creds, setCreds] = useState({ email: '', password: '' })
+    const [cookiesAllowed, setCookiesAllowed] = useState(true)
     console.log('cookie: ', navigator.cookieEnabled)
 
     const handleChange = event => {
@@ -31,6 +32,7 @@ const Login = ({ history, setIsLoggedIn }) => {
                 .catch(err => {
                     console.log('err: ', err)
                     console.log('Must enable third part cookies')
+                    setCookiesAllowed(false)
                 })
             })
             .catch(err => console.log('err: ', err))
@@ -69,6 +71,14 @@ const Login = ({ history, setIsLoggedIn }) => {
                         <button className="register-button">Register</button>
                     </Link>
                 </div>
+                {
+                    cookiesAllowed ? null : (
+                        <>
+                            <p className="warning">Must have third part cookies enabled</p>
+                            <p>Please enable third party cookies in your browser's settings</p>
+                        </>
+                    )
+                }
             </form>
         </div>
     )
