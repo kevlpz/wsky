@@ -38,10 +38,9 @@ const Login = ({ history, isLoggedIn, setIsLoggedIn }) => {
             .catch(err => console.log('err: ', err))
     }
 
-
-
-    !isLoggedIn ? (
-        <div className="login-container">
+    return (
+        !isLoggedIn ? (
+            <div className="login-container">
             <h2>Login</h2>
             <p>Log in to access cart!</p>
             <form onSubmit={handleSubmit}>
@@ -81,7 +80,8 @@ const Login = ({ history, isLoggedIn, setIsLoggedIn }) => {
                 }
             </form>
         </div>
-    ) : <Redirect to="/" />
+        ) : <Redirect to="/" />
+    )
 }
 
 export default Login
