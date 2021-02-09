@@ -101,7 +101,7 @@ function App(props) {
           {
             !isLoggedIn ? (
               <Route path="/login" render={(props) => <Login {...props} setIsLoggedIn={setIsLoggedIn} />} />
-            ) : <Redirect to="/" />
+            ) : <Redirect to="/cart" /> // temoporary url
           }
           <Route path="/products/:category" render={props => <CategoryPage {...props} addToCart={addToCart} isLoggedIn={isLoggedIn} />} />
           <Route exact path="/products" render={props => <CategoryPage {...props} addToCart={addToCart} />} />
