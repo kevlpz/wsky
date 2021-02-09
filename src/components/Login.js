@@ -28,6 +28,7 @@ const Login = ({ history, isLoggedIn, setIsLoggedIn }) => {
                 .then(res => {
                     setIsLoggedIn(true)
                     history.push('/')
+                    window.location.reload()
                 })
                 .catch(err => {
                     console.log('err: ', err)
