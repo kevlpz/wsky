@@ -19,9 +19,19 @@ const Login = ({ history, setIsLoggedIn }) => {
             withCredentials: true
         })
             .then(res => {
-                setIsLoggedIn(true)
-                history.push('/')
-                // window.location.reload()
+                axios({
+                    method: 'get',
+                    url: 'https://infinite-refuge-27306.herokuapp.com/users',
+                    withCredentials: true
+                })
+                .then(res => {
+                    setIsLoggedIn(true)
+                    history.push('/')
+                })
+                .catch(err => {
+                    console.log('err: ', err)
+                    console.log('Must enable third part cookies')
+                })
             })
             .catch(err => console.log('err: ', err))
     }
