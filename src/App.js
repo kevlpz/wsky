@@ -27,7 +27,6 @@ function App(props) {
           setCartItems(res.data)
           let total = 0
           res.data.forEach(item => {
-            console.log('item: ', item)
             total += item.price * item.quantity
           })
           setCartTotal(total.toFixed(2))
@@ -41,7 +40,6 @@ function App(props) {
       withCredentials: true
     })
     .then(res => {
-      console.log('res: ', res)
       if(res.data.email) {
         setIsLoggedIn(true)
       } else {
