@@ -15,7 +15,6 @@ function App(props) {
   const [cartTotal, setCartTotal] = useState(0)
   const [cartChange, setCartChange] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  console.log('render')
 
   // Get user Cart
   useEffect(() => {
