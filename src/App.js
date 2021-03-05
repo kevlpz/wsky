@@ -5,7 +5,7 @@ import Login from './components/Login.js'
 import Register from './components/Register'
 import CategoryPage from './components/CategoryPage'
 import Navbar from './components/Navbar'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import ShoppingCart from './components/ShoppingCart'
 import axios from 'axios'
 
