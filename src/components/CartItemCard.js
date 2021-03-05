@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState } from 'react'
 
 const CartItemCard = ({ name, price, quantity, img, productID, removeFromCart, handleQuantityChange }) => {
     const [quantityState, setQuantityState] = useState(quantity)
